@@ -1,0 +1,93 @@
+@use 'styles/variables' as v;
+
+// ============================================================
+// Reusable button — 3 sizes (sm/md/lg) × 3 variants (primary/secondary/ghost)
+// ============================================================
+
+// ----- Mixins -----
+@mixin btn-size($h, $px, $fs) {
+  height: $h;
+  padding: 0 $px;
+  font-size: $fs;
+}
+
+@mixin btn-variant($bg, $color, $border, $hover-bg, $hover-border: $hover-bg) {
+  background-color: $bg;
+  color: $color;
+  border: v.$border-width solid $border;
+
+  &:hover:not(:disabled) {
+    background-color: $hover-bg;
+    border-color: $hover-border;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(v.$color-primary, 0.4);
+    outline-offset: 2px;
+  }
+}
+
+// ----- Base -----
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$spacing-2;
+  font-family: v.$font-family-base;
+  font-weight: v.$font-weight-medium;
+  line-height: v.$line-height-tight;
+  border-radius: v.$radius-md;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: background-color v.$transition-fast, border-color v.$transition-fast,
+    color v.$transition-fast, box-shadow v.$transition-fast;
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  // Sizes
+  &--sm { @include btn-size(32px, v.$spacing-3, v.$font-size-sm); }
+  &--md { @include btn-size(40px, v.$spacing-4, v.$font-size-base); }
+  &--lg { @include btn-size(48px, v.$spacing-5, v.$font-size-lg); }
+
+  // Variants
+  &--primary {
+    @include btn-variant(
+      v.$color-primary,
+      v.$color-text-inverse,
+      v.$color-primary,
+      v.$color-primary-dark
+    );
+  }
+
+  &--secondary {
+    @include btn-variant(
+      transparent,
+      v.$color-primary,
+      v.$color-primary,
+      v.$color-primary,
+      v.$color-primary
+    );
+
+    &:hover:not(:disabled) {
+      color: v.$color-text-inverse;
+    }
+  }
+
+  &--ghost {
+    @include btn-variant(
+      transparent,
+      v.$color-text,
+      transparent,
+      v.$color-gray-100,
+      transparent
+    );
+  }
+}

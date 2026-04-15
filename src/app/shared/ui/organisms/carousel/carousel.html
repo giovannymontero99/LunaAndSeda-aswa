@@ -1,0 +1,35 @@
+<section class="carousel">
+  @if (title()) {
+    <header class="carousel__header">
+      <h2 class="carousel__title">{{ title() }}</h2>
+      <div class="carousel__controls">
+        <button
+          type="button"
+          class="carousel__btn"
+          aria-label="Anterior"
+          (click)="scroll('prev')"
+        >&#x2190;</button>
+        <button
+          type="button"
+          class="carousel__btn"
+          aria-label="Siguiente"
+          (click)="scroll('next')"
+        >&#x2192;</button>
+      </div>
+    </header>
+  }
+
+  <div class="carousel__track" #track>
+    @for (item of items(); track item.title) {
+      <app-card
+        class="carousel__item"
+        [title]="item.title"
+        [description]="item.description"
+        [image]="item.image ?? null"
+        [imageAlt]="item.imageAlt ?? ''"
+        variant="elevated"
+        [clickable]="true"
+      />
+    }
+  </div>
+</section>

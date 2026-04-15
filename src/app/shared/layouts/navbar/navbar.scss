@@ -1,0 +1,31 @@
+@use 'styles/variables' as v;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: v.$z-fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: v.$navbar-height;
+  padding: 0 v.$spacing-5;
+  background-color: v.$color-bg;
+  border-bottom: v.$border-width solid v.$border-color;
+  box-shadow: v.$shadow-sm;
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-2;
+  }
+
+  &__logo {
+    font-family: v.$font-family-base;
+    font-size: v.$font-size-xl;
+    font-weight: v.$font-weight-bold;
+    color: v.$color-primary;
+    letter-spacing: 0.5px;
+  }
+}

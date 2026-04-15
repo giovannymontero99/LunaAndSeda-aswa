@@ -1,0 +1,26 @@
+@let variantClass = 'card--' + variant();
+
+<article
+  class="card"
+  [class]="variantClass"
+  [class.card--clickable]="clickable()"
+  [attr.tabindex]="clickable() ? 0 : null"
+>
+  @if (image()) {
+    <div class="card__media">
+      <img [src]="image()" [alt]="imageAlt()" />
+    </div>
+  }
+
+  <div class="card__body">
+    @if (title()) {
+      <h3 class="card__title">{{ title() }}</h3>
+    }
+    @if (description()) {
+      <p class="card__description">{{ description() }}</p>
+    }
+    <ng-content />
+  </div>
+
+  <ng-content select="[card-footer]" />
+</article>

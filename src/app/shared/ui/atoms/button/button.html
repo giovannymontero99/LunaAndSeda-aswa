@@ -1,0 +1,13 @@
+@let variantClass = 'btn--' + variant();
+@let sizeClass = 'btn--' + size();
+
+<button
+  class="btn"
+  [class]="[variantClass, sizeClass]"
+  [class.btn--full]="fullWidth()"
+  [attr.type]="type()"
+  [disabled]="disabled()"
+  (click)="onClick($event)"
+>
+  <ng-content />
+</button>

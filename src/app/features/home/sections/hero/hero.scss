@@ -1,0 +1,72 @@
+@use 'styles/variables' as v;
+
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(85vh - #{v.$navbar-height});
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: v.$spacing-7 v.$spacing-5;
+  background: linear-gradient(135deg, v.$color-primary-light 0%, v.$color-primary-dark 100%);
+  color: v.$color-text-inverse;
+  overflow: hidden;
+
+  &__content {
+    max-width: 720px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: v.$font-size-3xl;
+    font-weight: v.$font-weight-bold;
+    line-height: v.$line-height-tight;
+    margin: 0 0 v.$spacing-4;
+  }
+
+  &__subtitle {
+    font-size: v.$font-size-lg;
+    line-height: v.$line-height-base;
+    margin: 0 0 v.$spacing-6;
+    opacity: 0.9;
+  }
+
+  &__actions {
+    display: flex;
+    gap: v.$spacing-3;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__scroll {
+    position: absolute;
+    bottom: v.$spacing-5;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: v.$spacing-1;
+    color: v.$color-text-inverse;
+    text-decoration: none;
+    font-size: v.$font-size-sm;
+    opacity: 0.85;
+    animation: hero-bounce 1.8s ease-in-out infinite;
+
+    &:hover { opacity: 1; }
+  }
+
+  &__scroll-arrow {
+    font-size: v.$font-size-xl;
+    line-height: 1;
+  }
+}
+
+@keyframes hero-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 8px); }
+}

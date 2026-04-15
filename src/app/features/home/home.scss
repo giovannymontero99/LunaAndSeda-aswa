@@ -1,0 +1,11 @@
+@use 'styles/variables' as v;
+
+:host {
+  display: block;
+  padding-top: v.$navbar-height;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+}

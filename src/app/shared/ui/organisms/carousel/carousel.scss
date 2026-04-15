@@ -1,0 +1,78 @@
+@use 'styles/variables' as v;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-4;
+  padding: v.$spacing-6 v.$spacing-5;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: v.$spacing-3;
+  }
+
+  &__title {
+    font-size: v.$font-size-2xl;
+    font-weight: v.$font-weight-bold;
+    color: v.$color-text;
+  }
+
+  &__controls {
+    display: flex;
+    gap: v.$spacing-2;
+  }
+
+  &__btn {
+    width: 40px;
+    height: 40px;
+    border-radius: v.$radius-full;
+    background-color: v.$color-bg;
+    border: v.$border-width solid v.$border-color;
+    color: v.$color-text;
+    font-size: v.$font-size-lg;
+    cursor: pointer;
+    transition: background-color v.$transition-fast, border-color v.$transition-fast;
+
+    &:hover {
+      background-color: v.$color-gray-100;
+      border-color: v.$color-primary;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: v.$spacing-4;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: v.$spacing-2;
+
+    // Hide scrollbar but keep functionality
+    scrollbar-width: thin;
+    &::-webkit-scrollbar { height: 6px; }
+    &::-webkit-scrollbar-thumb {
+      background-color: v.$color-gray-300;
+      border-radius: v.$radius-full;
+    }
+  }
+
+  // Show 3 full cards + half of the 4th, inviting horizontal scroll.
+  // Visible width = 3.5 cards + 3 gaps → cardWidth = (100% - 3*gap) / 3.5
+  &__item {
+    flex: 0 0 calc((100% - (#{v.$spacing-4} * 3)) / 3.5);
+    min-height: 420px;
+    scroll-snap-align: start;
+
+    @media (max-width: v.$breakpoint-md) {
+      flex-basis: calc((100% - #{v.$spacing-4}) / 1.5);
+      min-height: 360px;
+    }
+  }
+}
