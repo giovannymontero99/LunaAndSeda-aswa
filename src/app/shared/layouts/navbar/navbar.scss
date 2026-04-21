@@ -22,10 +22,15 @@
   }
 
   &__logo {
-    font-family: v.$font-family-base;
-    font-size: v.$font-size-xl;
-    font-weight: v.$font-weight-bold;
-    color: v.$color-primary;
-    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+
+    img {
+      height: calc(v.$navbar-height - #{v.$spacing-3} * 2);
+      width: auto;
+      object-fit: contain;
+    }
   }
 }

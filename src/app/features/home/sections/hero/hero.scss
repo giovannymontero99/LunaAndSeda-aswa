@@ -12,13 +12,41 @@
   align-items: center;
   justify-content: center;
   padding: v.$spacing-7 v.$spacing-5;
-  background: linear-gradient(135deg, v.$color-primary-light 0%, v.$color-primary-dark 100%);
+  background-image: url('/assets/images/hero/hero-section.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: v.$color-text-inverse;
   overflow: hidden;
 
+  // Dark overlay to keep text readable over any image
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+    pointer-events: none;
+  }
+
   &__content {
+    position: relative;
+    z-index: 1;
     max-width: 720px;
     text-align: center;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-semibold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: v.$spacing-3;
+    opacity: 0.85;
   }
 
   &__title {
@@ -44,6 +72,7 @@
 
   &__scroll {
     position: absolute;
+    z-index: 1;
     bottom: v.$spacing-5;
     left: 50%;
     transform: translateX(-50%);

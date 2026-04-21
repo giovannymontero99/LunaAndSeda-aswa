@@ -1,0 +1,46 @@
+@use 'styles/variables' as v;
+
+:host {
+  display: block;
+}
+
+.online-order {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: v.$spacing-7 v.$spacing-5;
+  background-image: url('/assets/images/floating.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: v.$spacing-5;
+    max-width: 480px;
+    margin-left: v.$spacing-7;
+  }
+
+  &__title {
+    font-size: v.$font-size-3xl;
+    font-weight: v.$font-weight-bold;
+    color: v.$color-text;
+    line-height: v.$line-height-tight;
+  }
+
+  @media (max-width: v.$breakpoint-md) {
+    justify-content: center;
+    text-align: center;
+    background-position: center bottom;
+
+    &__content {
+      margin-left: 0;
+      align-items: center;
+    }
+  }
+}

@@ -3,15 +3,21 @@
 :host {
   display: block;
   height: 100%;
+  min-height: inherit;
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   height: 100%;
   overflow: hidden;
   border-radius: v.$radius-lg;
   background-color: v.$color-bg;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: transform v.$transition-base, box-shadow v.$transition-base;
 
   // Variants
@@ -31,6 +37,29 @@
     background-color: v.$color-bg-alt;
   }
 
+  // When a background image is set, overlay a gradient so text stays readable
+  &--with-bg {
+    color: v.$color-text-inverse;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.25) 50%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      pointer-events: none;
+    }
+
+    .card__title,
+    .card__description {
+      color: v.$color-text-inverse;
+    }
+  }
+
   &--clickable {
     cursor: pointer;
 
@@ -45,25 +74,13 @@
     }
   }
 
-  &__media {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background-color: v.$color-gray-200;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
   &__body {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: v.$spacing-2;
     padding: v.$spacing-4;
-    flex: 1;
   }
 
   &__title {

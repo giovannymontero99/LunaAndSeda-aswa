@@ -1,0 +1,110 @@
+@use 'styles/variables' as v;
+
+:host {
+  display: block;
+}
+
+.footer {
+  background-color: v.$color-gray-900;
+  color: v.$color-text-inverse;
+  padding: v.$spacing-7 v.$spacing-5 v.$spacing-5;
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: v.$spacing-7;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-3;
+    max-width: 320px;
+  }
+
+  &__logo {
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__tagline {
+    font-size: v.$font-size-base;
+    color: v.$color-gray-400;
+    line-height: v.$line-height-base;
+  }
+
+  &__socials {
+    display: flex;
+    gap: v.$spacing-3;
+    margin-top: v.$spacing-2;
+  }
+
+  &__social {
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-medium;
+    color: v.$color-text-inverse;
+    transition: color v.$transition-fast;
+
+    &:hover { color: v.$color-primary-light; }
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: v.$spacing-6;
+  }
+
+  &__column-title {
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-inverse;
+    margin-bottom: v.$spacing-3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-2;
+  }
+
+  &__link {
+    font-size: v.$font-size-sm;
+    color: v.$color-gray-400;
+    transition: color v.$transition-fast;
+
+    &:hover { color: v.$color-text-inverse; }
+  }
+
+  &__bottom {
+    max-width: 1200px;
+    margin: v.$spacing-6 auto 0;
+    padding-top: v.$spacing-4;
+    border-top: 1px solid v.$color-gray-800;
+    text-align: center;
+    font-size: v.$font-size-sm;
+    color: v.$color-gray-500;
+  }
+
+  @media (max-width: v.$breakpoint-md) {
+    &__main {
+      grid-template-columns: 1fr;
+      gap: v.$spacing-6;
+    }
+
+    &__columns {
+      grid-template-columns: repeat(2, 1fr);
+      gap: v.$spacing-4;
+    }
+  }
+
+  @media (max-width: v.$breakpoint-sm) {
+    &__columns {
+      grid-template-columns: 1fr;
+    }
+  }
+}

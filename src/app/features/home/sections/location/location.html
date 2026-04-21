@@ -1,0 +1,31 @@
+<section class="location">
+  <div class="location__content">
+    <h2 class="location__title">Visítanos</h2>
+    <p class="location__subtitle">
+      Te esperamos en nuestra tienda para que vivas la experiencia Luna & Seda Beauty.
+    </p>
+
+    <ul class="location__info">
+      @for (item of info; track item.label) {
+        <li class="location__item">
+          <span class="location__label">{{ item.label }}</span>
+          <span class="location__value">{{ item.value }}</span>
+        </li>
+      }
+    </ul>
+
+    <a [href]="directionsUrl" target="_blank" rel="noopener">
+      <app-button variant="primary" size="lg">Cómo llegar</app-button>
+    </a>
+  </div>
+
+  <div class="location__map">
+    <iframe
+      [src]="mapEmbedUrl"
+      title="Mapa de ubicación"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+    ></iframe>
+  </div>
+</section>

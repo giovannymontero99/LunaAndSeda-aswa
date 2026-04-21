@@ -1,0 +1,15 @@
+<section class="customer-favorites">
+  <div class="customer-favorites__content">
+    <h2 class="customer-favorites__title">Favoritos de los clientes</h2>
+    <p class="customer-favorites__subtitle">
+      Descubre los productos que más aman nuestros clientes.
+    </p>
+    <app-button variant="primary" size="lg">Ver más</app-button>
+  </div>
+
+  <div class="customer-favorites__grid">
+    @for (img of images; track $index) {
+      <div class="customer-favorites__tile" [style.background-image]="'url(' + img + ')'"></div>
+    }
+  </div>
+</section>

@@ -4,14 +4,11 @@
   class="card"
   [class]="variantClass"
   [class.card--clickable]="clickable()"
+  [class.card--with-bg]="!!image()"
+  [style.background-image]="image() ? 'url(' + image() + ')' : null"
+  [attr.aria-label]="imageAlt() || null"
   [attr.tabindex]="clickable() ? 0 : null"
 >
-  @if (image()) {
-    <div class="card__media">
-      <img [src]="image()" [alt]="imageAlt()" />
-    </div>
-  }
-
   <div class="card__body">
     @if (title()) {
       <h3 class="card__title">{{ title() }}</h3>
